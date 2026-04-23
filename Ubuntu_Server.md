@@ -36,13 +36,19 @@ A personal project to repurpose an old laptop as a home Ubuntu server with stati
   ```yaml
   network:
     version: 2
-    ethernets:
-      eth0:
-        dhcp4: no
-        addresses: [192.168.x.x/24]
-        gateway4: 192.168.x.x
+    wifis:
+      wlo1:
+        dhcp4: false
+        addresses:
+          -192.168.x.25/24
+        routes:
+          - to: default
+            via: 192.168.x.1
         nameservers:
-          addresses: [8.8.8.8, 8.8.4.4]
+          addresses: [8.8.8.8, 1.1.1.1]
+        access-points:
+          "YourWifi":
+          password: "YourWifiPassword"
   ```
 - Applied config:
   ```bash
@@ -77,10 +83,5 @@ A personal project to repurpose an old laptop as a home Ubuntu server with stati
 
 ## 🔜 Next Steps
 
-- [ ] (Add your next goals here — e.g. install Docker, set up Nginx, host a service...)
-
+- Unknow yet
 ---
-
-## 📝 Notes
-- Replace `192.168.x.x` with your actual static IP and gateway.
-- Replace `eth0` with your actual network interface (check with `ip a`).
